@@ -2,9 +2,11 @@ package com.example.aplikasibelajar.Video;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +41,8 @@ public class VideoActivity extends AppCompatActivity {
     Context context;
     ApiInterface apiInterface;
 
+    @BindView(R.id.toolbarVideo)
+    Toolbar toolbarVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,12 @@ public class VideoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         context = this;
 
-        apiInterface = UtilsApi.getApiService();
+        setSupportActionBar(toolbarVideo);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Video");
 
+        apiInterface = UtilsApi.getApiService();
         fetchVideo();
     }
 
@@ -56,10 +64,10 @@ public class VideoActivity extends AppCompatActivity {
         apiInterface.getVideo().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     try {
                         JSONObject object = new JSONObject(response.body().string());
-                        if (object.getString("status").equals("200")){
+                        if (object.getString("status").equals("200")) {
                             JSONArray array = object.getJSONArray("data");
 
                             listVideo = new ArrayList<>();
@@ -69,22 +77,22 @@ public class VideoActivity extends AppCompatActivity {
                                 listVideo.add(dataBean);
                             }
 
-                            videoAdapter = new VideoAdapter(context,listVideo);
+                            videoAdapter = new VideoAdapter(context, listVideo);
                             recyclerVideo.setAdapter(videoAdapter);
                             recyclerVideo.setLayoutManager(new LinearLayoutManager(context));
                             recyclerVideo.setHasFixedSize(true);
-                        }else{
-                            Toast.makeText(context, ""+object.getString("status"), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "" + object.getString("status"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }else{
+                } else {
                     try {
                         JSONObject object = new JSONObject(response.errorBody().string());
-                        Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "" + object.getString("pesan"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -98,5 +106,11 @@ public class VideoActivity extends AppCompatActivity {
                 Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 }
