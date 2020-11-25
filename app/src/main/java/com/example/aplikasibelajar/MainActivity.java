@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.aplikasibelajar.About.AboutActivity;
+import com.example.aplikasibelajar.Jobsheet.JobsheetActivity;
 import com.example.aplikasibelajar.Materi.MateriActivity;
 
 import butterknife.BindView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.cardAbout)
     CardView cardAbout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent materi = new Intent(getApplicationContext(), MateriActivity.class);
                 startActivity(materi);
+            }
+        });
+        cardJobsheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent jobsheet = new Intent(getApplicationContext(), JobsheetActivity.class);
+                startActivity(jobsheet);
             }
         });
     }

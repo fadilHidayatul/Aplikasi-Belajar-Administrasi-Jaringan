@@ -1,4 +1,4 @@
-package com.example.aplikasibelajar.Materi;
+package com.example.aplikasibelajar.Jobsheet;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,12 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aplikasibelajar.Materi.Adapter.MateriAdapter;
+import com.example.aplikasibelajar.Jobsheet.Adapter.JobsheetAdapter;
 import com.example.aplikasibelajar.R;
 import com.example.aplikasibelajar.UtilsApi.ApiInterface;
 import com.example.aplikasibelajar.UtilsApi.UtilsApi;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,53 +29,51 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MateriActivity extends AppCompatActivity {
-
-
-    RecyclerView recycleMateri;
-    List<Materi.DataBean> dataBeans;
-    MateriAdapter materiAdapter;
-
-    ApiInterface apiInterface;
+public class JobsheetActivity extends AppCompatActivity {
+    
+    @BindView(R.id.recyclerJobsheet)
+    RecyclerView recyclerJobsheet;
+    JobsheetAdapter jobsheetAdapter;
+    List<Jobsheet.DataBean> listJobsheet;
+    
     Context context;
+    ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_materi);
-        recycleMateri = findViewById(R.id.recycleMateri);
-
+        setContentView(R.layout.activity_jobsheet);
+        ButterKnife.bind(this);
         context = this;
-
+        
         apiInterface = UtilsApi.getApiService();
-        fetchMateri();
+        fetchJobsheet();
     }
 
-    private void fetchMateri() {
-        apiInterface.getMateri().enqueue(new Callback<ResponseBody>() {
+    private void fetchJobsheet() {
+        apiInterface.getJobsheet().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     try {
                         JSONObject object = new JSONObject(response.body().string());
-                        if (object.getInt("status")==200){
-                            Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        if (object.getString("status").equals("200")){
                             JSONArray array = object.getJSONArray("data");
 
-                            dataBeans = new ArrayList<>();
+                            listJobsheet = new ArrayList<>();
                             Gson gson = new Gson();
-                            for (int i = 0; i < array.length(); i++) {
-                                Materi.DataBean dataBean = gson.fromJson(array.getJSONObject(i).toString(), Materi.DataBean.class);
-                                dataBeans.add(dataBean);
+                            for (int i = 0; i <array.length() ; i++) {
+                                Jobsheet.DataBean dataBean = gson.fromJson(array.getJSONObject(i).toString(), Jobsheet.DataBean.class);
+                                listJobsheet.add(dataBean);
                             }
 
-                            materiAdapter = new MateriAdapter(context, dataBeans);
-                            recycleMateri.setAdapter(materiAdapter);
-                            recycleMateri.setLayoutManager(new LinearLayoutManager(context));
-                            recycleMateri.setHasFixedSize(true);
+                            jobsheetAdapter = new JobsheetAdapter(context,listJobsheet);
+                            recyclerJobsheet.setAdapter(jobsheetAdapter);
+                            recyclerJobsheet.setLayoutManager(new LinearLayoutManager(context));
+                            recyclerJobsheet.setHasFixedSize(true);
 
                         }else{
-                            //Toast.makeText(context, ""+object.getString("status"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, ""+object.getString("status"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -86,7 +83,7 @@ public class MateriActivity extends AppCompatActivity {
                 }else{
                     try {
                         JSONObject object = new JSONObject(response.errorBody().string());
-                        //Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -97,7 +94,7 @@ public class MateriActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(context, "Jaringan ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
     }

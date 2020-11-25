@@ -1,4 +1,4 @@
-package com.example.aplikasibelajar.Materi;
+package com.example.aplikasibelajar.Video;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,12 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aplikasibelajar.Materi.Adapter.MateriAdapter;
 import com.example.aplikasibelajar.R;
 import com.example.aplikasibelajar.UtilsApi.ApiInterface;
 import com.example.aplikasibelajar.UtilsApi.UtilsApi;
+import com.example.aplikasibelajar.Video.Adapter.VideoAdapter;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,53 +29,52 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MateriActivity extends AppCompatActivity {
+public class VideoActivity extends AppCompatActivity {
 
+    @BindView(R.id.recyclerVideo)
+    RecyclerView recyclerVideo;
+    VideoAdapter videoAdapter;
+    List<Video.DataBean> listVideo;
 
-    RecyclerView recycleMateri;
-    List<Materi.DataBean> dataBeans;
-    MateriAdapter materiAdapter;
-
-    ApiInterface apiInterface;
     Context context;
+    ApiInterface apiInterface;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_materi);
-        recycleMateri = findViewById(R.id.recycleMateri);
-
+        setContentView(R.layout.activity_video);
+        ButterKnife.bind(this);
         context = this;
 
         apiInterface = UtilsApi.getApiService();
-        fetchMateri();
+
+        fetchVideo();
     }
 
-    private void fetchMateri() {
-        apiInterface.getMateri().enqueue(new Callback<ResponseBody>() {
+    private void fetchVideo() {
+        apiInterface.getVideo().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
                     try {
                         JSONObject object = new JSONObject(response.body().string());
-                        if (object.getInt("status")==200){
-                            Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        if (object.getString("status").equals("200")){
                             JSONArray array = object.getJSONArray("data");
 
-                            dataBeans = new ArrayList<>();
+                            listVideo = new ArrayList<>();
                             Gson gson = new Gson();
                             for (int i = 0; i < array.length(); i++) {
-                                Materi.DataBean dataBean = gson.fromJson(array.getJSONObject(i).toString(), Materi.DataBean.class);
-                                dataBeans.add(dataBean);
+                                Video.DataBean dataBean = gson.fromJson(array.getJSONObject(i).toString(), Video.DataBean.class);
+                                listVideo.add(dataBean);
                             }
 
-                            materiAdapter = new MateriAdapter(context, dataBeans);
-                            recycleMateri.setAdapter(materiAdapter);
-                            recycleMateri.setLayoutManager(new LinearLayoutManager(context));
-                            recycleMateri.setHasFixedSize(true);
-
+                            videoAdapter = new VideoAdapter(context,listVideo);
+                            recyclerVideo.setAdapter(videoAdapter);
+                            recyclerVideo.setLayoutManager(new LinearLayoutManager(context));
+                            recyclerVideo.setHasFixedSize(true);
                         }else{
-                            //Toast.makeText(context, ""+object.getString("status"), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, ""+object.getString("status"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -86,7 +84,7 @@ public class MateriActivity extends AppCompatActivity {
                 }else{
                     try {
                         JSONObject object = new JSONObject(response.errorBody().string());
-                        //Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, ""+object.getString("pesan"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -97,7 +95,7 @@ public class MateriActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(context, "Jaringan ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
             }
         });
     }

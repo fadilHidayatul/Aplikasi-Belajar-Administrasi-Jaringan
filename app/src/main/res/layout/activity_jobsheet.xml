@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bluebg"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Materi.MateriActivity">
-
+    android:background="@color/bluebg"
+    tools:context=".Jobsheet.JobsheetActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleMateri"
+        android:id="@+id/recyclerJobsheet"
+        tools:itemCount="4"
         android:scrollbars="none"
-        tools:listitem="@layout/row_materi"
-        tools:itemCount="2"
+        tools:listitem="@layout/row_jobsheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

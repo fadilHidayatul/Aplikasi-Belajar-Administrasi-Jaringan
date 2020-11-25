@@ -7,4 +7,10 @@ import retrofit2.http.GET;
 public interface ApiInterface {
     @GET("getDataMateri")
     Call<ResponseBody>getMateri();
+
+    @GET("getDataJobsheet")
+    Call<ResponseBody>getJobsheet();
+
+    @GET("getDataVideo")
+    Call<ResponseBody>getVideo();
 }

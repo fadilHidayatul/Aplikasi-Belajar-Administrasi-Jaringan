@@ -4,17 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bluebg"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".Materi.MateriActivity">
-
+    android:background="@color/bluebg"
+    tools:context=".Video.VideoActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleMateri"
-        android:scrollbars="none"
-        tools:listitem="@layout/row_materi"
-        tools:itemCount="2"
+        android:id="@+id/recyclerVideo"
+        tools:itemCount="3"
+        tools:listitem="@layout/row_video"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
