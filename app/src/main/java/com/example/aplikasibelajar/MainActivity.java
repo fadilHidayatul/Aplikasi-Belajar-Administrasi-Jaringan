@@ -11,6 +11,7 @@ import com.example.aplikasibelajar.About.AboutActivity;
 import com.example.aplikasibelajar.Jobsheet.JobsheetActivity;
 import com.example.aplikasibelajar.Materi.MateriActivity;
 import com.example.aplikasibelajar.Silabus.SilabusActivity;
+import com.example.aplikasibelajar.Soal.SoalActivity;
 import com.example.aplikasibelajar.Video.VideoActivity;
 
 import butterknife.BindView;
@@ -73,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent silabus = new Intent(getApplicationContext(), SilabusActivity.class);
                 startActivity(silabus);
+            }
+        });
+        cardSoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent soal = new Intent(getApplicationContext(), SoalActivity.class);
+                startActivity(soal);
             }
         });
     }
