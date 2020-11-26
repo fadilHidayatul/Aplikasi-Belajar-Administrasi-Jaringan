@@ -69,7 +69,6 @@ public class MateriActivity extends AppCompatActivity {
                     try {
                         JSONObject object = new JSONObject(response.body().string());
                         if (object.getInt("status") == 200) {
-                            Toast.makeText(context, "" + object.getString("pesan"), Toast.LENGTH_SHORT).show();
                             JSONArray array = object.getJSONArray("data");
 
                             dataBeans = new ArrayList<>();

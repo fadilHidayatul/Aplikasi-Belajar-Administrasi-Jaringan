@@ -9,4 +9,10 @@
     tools:context=".Silabus.SilabusActivity"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSilabus"
+        android:layout_marginVertical="-5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
