@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.aplikasibelajar"
-        minSdkVersion 21
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -55,7 +55,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //PDVviewer
     implementation 'es.voghdev.pdfviewpager:library:1.0.3'
-
     //YoutubePlayer
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 }
