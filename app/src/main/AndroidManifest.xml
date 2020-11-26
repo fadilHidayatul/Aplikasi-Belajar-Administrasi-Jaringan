@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Soal.SoalActivity"></activity>
+        <activity android:name=".Soal.SoalLatihanActivity"></activity>
+        <activity android:name=".Soal.SoalActivity" />
         <activity android:name=".Silabus.SilabusActivity" />
         <activity android:name=".Video.VideoActivity" />
         <activity android:name=".Jobsheet.JobsheetActivity" />
