@@ -1,15 +1,18 @@
 package com.example.aplikasibelajar.Jobsheet.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aplikasibelajar.Jobsheet.Jobsheet;
+import com.example.aplikasibelajar.Jobsheet.JobsheetReadActivity;
 import com.example.aplikasibelajar.R;
 
 import java.util.List;
@@ -36,6 +39,14 @@ public class JobsheetAdapter extends RecyclerView.Adapter<JobsheetAdapter.viewho
     @Override
     public void onBindViewHolder(@NonNull JobsheetAdapter.viewholder holder, int position) {
         holder.namaJobsheet.setText(dataBeans.get(position).getJudul_jobsheet());
+        holder.cardSelectJobsheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, JobsheetReadActivity.class);
+                intent.putExtra("idJobsheet",dataBeans.get(position).getId_jobsheet());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -46,6 +57,8 @@ public class JobsheetAdapter extends RecyclerView.Adapter<JobsheetAdapter.viewho
     public class viewholder extends RecyclerView.ViewHolder {
         @BindView(R.id.namaJobsheet)
         TextView namaJobsheet;
+        @BindView(R.id.cardSelectJobsheet)
+        CardView cardSelectJobsheet;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
