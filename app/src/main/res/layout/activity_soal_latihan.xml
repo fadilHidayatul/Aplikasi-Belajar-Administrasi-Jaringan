@@ -50,67 +50,157 @@
                     android:backgroundTint="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/jawaban1"
-                        android:text="A. ini adalah jawaban 1"
-                        android:padding="12dp"
-                        android:layout_marginStart="6dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="A."
+                            android:gravity="center"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/jawaban1"
+                            android:text="ini adalah jawaban 1"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardJawaban2"
                     app:cardCornerRadius="6dp"
-                    android:backgroundTint="@color/blue"
                     android:layout_marginVertical="12dp"
+                    android:backgroundTint="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/jawaban2"
-                        android:text="B. ini adalah jawaban 2"
-                        android:layout_marginStart="6dp"
-                        android:padding="12dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="B."
+                            android:gravity="center"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/jawaban2"
+                            android:text="ini adalah jawaban 2"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardJawaban3"
                     app:cardCornerRadius="6dp"
-                    android:backgroundTint="@color/blue"
                     android:layout_marginVertical="12dp"
+                    android:backgroundTint="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/jawaban3"
-                        android:text="C. ini adalah jawaban 3"
-                        android:layout_marginStart="6dp"
-                        android:padding="12dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="C."
+                            android:gravity="center"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/jawaban3"
+                            android:text="ini adalah jawaban 3"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardJawaban4"
                     app:cardCornerRadius="6dp"
-                    android:backgroundTint="@color/blue"
                     android:layout_marginVertical="12dp"
+                    android:backgroundTint="@color/blue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/jawaban4"
-                        android:text="D. ini adalah jawaban 4"
-                        android:layout_marginStart="6dp"
-                        android:padding="12dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="D."
+                            android:gravity="center"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/jawaban4"
+                            android:text="ini adalah jawaban 4"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardJawaban5"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginVertical="12dp"
+                    android:backgroundTint="@color/blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:text="E."
+                            android:gravity="center"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/jawaban5"
+                            android:text="ini adalah jawaban 5"
+                            android:padding="12dp"
+                            android:layout_marginStart="6dp"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
             </LinearLayout>
 
             <androidx.cardview.widget.CardView

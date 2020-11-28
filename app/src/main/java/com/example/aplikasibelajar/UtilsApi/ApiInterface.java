@@ -13,4 +13,7 @@ public interface ApiInterface {
 
     @GET("getDataVideo")
     Call<ResponseBody>getVideo();
+
+    @GET("getDataSoal")
+    Call<ResponseBody>getAllSoal();
 }
