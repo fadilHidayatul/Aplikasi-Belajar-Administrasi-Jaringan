@@ -1,9 +1,8 @@
-package com.example.aplikasibelajar.Materi;
+package com.example.aplikasibelajar.RPP;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -14,40 +13,40 @@ import com.example.aplikasibelajar.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import es.voghdev.pdfviewpager.library.PDFViewPager;
 import es.voghdev.pdfviewpager.library.RemotePDFViewPager;
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
 import es.voghdev.pdfviewpager.library.remote.DownloadFile;
 import es.voghdev.pdfviewpager.library.util.FileUtil;
 
-public class MateriReadActivity extends AppCompatActivity implements DownloadFile.Listener {
+public class RppReadActivity extends AppCompatActivity implements DownloadFile.Listener {
 
-    @BindView(R.id.ToolbarMateriRead)
-    Toolbar ToolbarMateriRead;
+    Context context;
+    @BindView(R.id.toolbarReadRpp)
+    Toolbar toolbarReadRpp;
     @BindView(R.id.container)
     LinearLayout container;
 
-    Context context;
     RemotePDFViewPager remotePDFViewPager;
     PDFPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_materi_read);
+        setContentView(R.layout.activity_rpp_read);
         ButterKnife.bind(this);
         context = this;
 
-        setSupportActionBar(ToolbarMateriRead);
-        getSupportActionBar().setTitle("Materi");
+        setSupportActionBar(toolbarReadRpp);
+        getSupportActionBar().setTitle("RPP");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        String idMateri = intent.getStringExtra("idMateri");
-        Toast.makeText(this, ""+idMateri, Toast.LENGTH_SHORT).show();
+        String idRPP = intent.getStringExtra("idRPP");
+        Toast.makeText(context, ""+idRPP, Toast.LENGTH_SHORT).show();
 
         remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
+
     }
 
     @Override
@@ -61,17 +60,12 @@ public class MateriReadActivity extends AppCompatActivity implements DownloadFil
 
     @Override
     public void onFailure(Exception e) {
-        Toast.makeText(context, "PDF Error", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "PDF Cannot open", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onProgressUpdate(int progress, int total) {
 
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
