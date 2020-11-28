@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Materi.MateriReadActivity"></activity>
+        <activity android:name=".RPP.RppActivity"></activity>
+        <activity android:name=".Materi.MateriReadActivity" />
         <activity android:name=".Jobsheet.JobsheetReadActivity" />
         <activity
             android:name=".Video.PlayVideoActivity"

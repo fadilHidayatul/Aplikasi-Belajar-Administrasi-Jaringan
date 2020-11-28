@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView;
 import com.example.aplikasibelajar.About.AboutActivity;
 import com.example.aplikasibelajar.Jobsheet.JobsheetActivity;
 import com.example.aplikasibelajar.Materi.MateriActivity;
+import com.example.aplikasibelajar.RPP.RppActivity;
 import com.example.aplikasibelajar.Silabus.SilabusActivity;
 import com.example.aplikasibelajar.Soal.SoalActivity;
 import com.example.aplikasibelajar.Video.VideoActivity;
@@ -81,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent soal = new Intent(getApplicationContext(), SoalActivity.class);
                 startActivity(soal);
+            }
+        });
+        cardrpp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rpp = new Intent(getApplicationContext(), RppActivity.class);
+                startActivity(rpp);
             }
         });
     }
