@@ -75,11 +75,15 @@ public class ResultSoalActivity extends AppCompatActivity {
     }
 
     private void playButton() {
+        Intent intent = getIntent();
+        String idSoal = intent.getStringExtra("idSoal");
         btnReplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-
+                Intent rollback = new Intent(ResultSoalActivity.this, SoalLatihanActivity.class);
+                rollback.putExtra("idSoal",idSoal);
+                startActivity(rollback);
             }
         });
 
