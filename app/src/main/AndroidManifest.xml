@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RPP.RppReadActivity"></activity>
+        <activity android:name=".Soal.ResultSoalActivity"></activity>
+        <activity android:name=".RPP.RppReadActivity" />
         <activity android:name=".RPP.RppActivity" />
         <activity android:name=".Materi.MateriReadActivity" />
         <activity android:name=".Jobsheet.JobsheetReadActivity" />
