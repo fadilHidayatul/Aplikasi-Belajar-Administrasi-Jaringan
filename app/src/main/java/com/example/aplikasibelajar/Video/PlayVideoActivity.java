@@ -21,10 +21,11 @@ import butterknife.ButterKnife;
 
 public class PlayVideoActivity extends AppCompatActivity implements LifecycleObserver {
 
+    Context context;
+    String idVideo = "";
+
     @BindView(R.id.playerView)
     YouTubePlayerView playerView;
-
-    Context context;
     @BindView(R.id.btnBack)
     ImageView btnBack;
 
@@ -35,9 +36,10 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
         ButterKnife.bind(this);
         context = this;
 
-        back();
+
         Intent intent = getIntent();
-        String idVideo = intent.getStringExtra("id");
+        idVideo = intent.getStringExtra("id");
+        back();
         getLifecycle().addObserver(playerView);
 
         playerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
@@ -93,7 +95,6 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
         });
         playerView.enterFullScreen();
         playerView.isFullScreen();
-        playerView.isFullScreen();
         playerView.toggleFullScreen();
 
         playerView.getPlayerUiController().setVideoTitle("Best of this month");
@@ -103,8 +104,9 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerView.release();
+                idVideo = "";
                 finish();
+                playerView.release();
             }
         });
     }
@@ -112,7 +114,9 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        playerView.release();
+        idVideo = "";
         finish();
+        playerView.release();
+
     }
 }

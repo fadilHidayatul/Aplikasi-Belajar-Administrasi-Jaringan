@@ -16,4 +16,7 @@ public interface ApiInterface {
 
     @GET("getDataSoal")
     Call<ResponseBody>getAllSoal();
+
+    @GET("getDataSiswa")
+    Call<ResponseBody>getDataSiswa();
 }
