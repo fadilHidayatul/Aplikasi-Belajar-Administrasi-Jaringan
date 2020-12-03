@@ -43,8 +43,7 @@ public class JobsheetReadActivity extends AppCompatActivity implements DownloadF
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        String idJobsheet = intent.getStringExtra("idJobsheet");
-        Toast.makeText(this, ""+idJobsheet, Toast.LENGTH_SHORT).show();
+        String idJobsheet = intent.getStringExtra("idJobsheet");//tampil berdasarkan id
 
         remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
     }

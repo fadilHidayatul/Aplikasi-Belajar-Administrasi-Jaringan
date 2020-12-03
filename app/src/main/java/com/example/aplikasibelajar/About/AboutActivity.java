@@ -26,10 +26,10 @@ public class AboutActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbarAbout);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("RPP");
+        getSupportActionBar().setTitle("About");
+
     }
 
     @Override

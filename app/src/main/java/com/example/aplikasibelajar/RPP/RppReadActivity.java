@@ -3,6 +3,7 @@ package com.example.aplikasibelajar.RPP;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,12 +21,12 @@ import es.voghdev.pdfviewpager.library.util.FileUtil;
 
 public class RppReadActivity extends AppCompatActivity implements DownloadFile.Listener {
 
-    Context context;
     @BindView(R.id.toolbarReadRpp)
     Toolbar toolbarReadRpp;
     @BindView(R.id.container)
     LinearLayout container;
 
+    Context context;
     RemotePDFViewPager remotePDFViewPager;
     PDFPagerAdapter adapter;
 
@@ -42,8 +43,7 @@ public class RppReadActivity extends AppCompatActivity implements DownloadFile.L
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        String idRPP = intent.getStringExtra("idRPP");
-        Toast.makeText(context, ""+idRPP, Toast.LENGTH_SHORT).show();
+        String idRPP = intent.getStringExtra("idRPP"); //tampil berdasarkan id
 
         remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
 
@@ -69,8 +69,8 @@ public class RppReadActivity extends AppCompatActivity implements DownloadFile.L
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        adapter.close();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 }

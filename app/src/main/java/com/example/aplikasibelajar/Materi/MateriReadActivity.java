@@ -44,8 +44,7 @@ public class MateriReadActivity extends AppCompatActivity implements DownloadFil
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent intent = getIntent();
-        String idMateri = intent.getStringExtra("idMateri");
-        Toast.makeText(this, ""+idMateri, Toast.LENGTH_SHORT).show();
+        String idMateri = intent.getStringExtra("idMateri");//tampil berdasarkan id
 
         remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
     }
