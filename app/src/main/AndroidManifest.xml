@@ -16,7 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Soal.ResultSoalActivity"></activity>
+        <activity android:name=".IntroLogin.RegisterActivity"/>
+        <activity android:name=".IntroLogin.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Soal.ResultSoalActivity" />
         <activity android:name=".RPP.RppReadActivity" />
         <activity android:name=".RPP.RppActivity" />
         <activity android:name=".Materi.MateriReadActivity" />
@@ -25,19 +33,15 @@
             android:name=".Video.PlayVideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout" />
         <activity android:name=".Soal.SoalLatihanActivity" />
-        <activity android:name=".Soal.SoalActivity" />
+        <activity
+            android:name=".Soal.SoalActivity"
+            android:screenOrientation="fullSensor" />
         <activity android:name=".Silabus.SilabusActivity" />
         <activity android:name=".Video.VideoActivity" />
         <activity android:name=".Jobsheet.JobsheetActivity" />
         <activity android:name=".Materi.MateriActivity" />
         <activity android:name=".About.AboutActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
