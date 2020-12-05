@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.aplikasibelajar">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".IntroLogin.RegisterActivity"/>
+        <activity android:name=".IntroLogin.RegisterActivity" android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".IntroLogin.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +27,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Soal.ResultSoalActivity" />
-        <activity android:name=".RPP.RppReadActivity" />
+        <activity android:name=".RPP.RppReadActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".RPP.RppActivity" />
-        <activity android:name=".Materi.MateriReadActivity" />
-        <activity android:name=".Jobsheet.JobsheetReadActivity" />
+        <activity android:name=".Materi.MateriReadActivity" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".Jobsheet.JobsheetReadActivity" android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".Video.PlayVideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout" />
@@ -36,7 +38,7 @@
         <activity
             android:name=".Soal.SoalActivity"
             android:screenOrientation="fullSensor" />
-        <activity android:name=".Silabus.SilabusActivity" />
+        <activity android:name=".Silabus.SilabusActivity" android:configChanges="orientation|screenSize"/>
         <activity android:name=".Video.VideoActivity" />
         <activity android:name=".Jobsheet.JobsheetActivity" />
         <activity android:name=".Materi.MateriActivity" />

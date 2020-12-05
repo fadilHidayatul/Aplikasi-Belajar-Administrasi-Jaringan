@@ -38,9 +38,6 @@ public class RetrofitClient {
                 .client(client.build())
                 .build();
 
-//        if (retrofit == null){
-//
-//        }
         return retrofit;
     }
 

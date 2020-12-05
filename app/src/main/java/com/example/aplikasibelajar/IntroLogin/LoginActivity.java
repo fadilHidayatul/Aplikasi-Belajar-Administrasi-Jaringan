@@ -50,9 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         context = this;
         apiInterface = UtilsApi.getApiLogin();
 
-//        Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
-//        startActivity(loggedIn);
-//        finish();
         login();
     }
 
@@ -81,11 +78,11 @@ public class LoginActivity extends AppCompatActivity {
 
                                         //session here
 
-
                                         Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(loggedIn);
                                         finish();
-
+                                    }else {
+                                        Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
