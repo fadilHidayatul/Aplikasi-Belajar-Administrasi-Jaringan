@@ -65,9 +65,9 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (TextUtils.isEmpty(editKelas.getText().toString())){
                     editKelas.setError("Masukkan Kelas");
                 }else if (TextUtils.isEmpty(editUsername.getText().toString())){
-                    editUsername.setText("Masukkan Username");
+                    editUsername.setError("Masukkan Username");
                 }else if (TextUtils.isEmpty(editPassword.getText().toString())){
-                    editPassword.setText("Masukkan Password");
+                    editPassword.setError("Masukkan Password");
                 }else{
                     apiInterface.registerUser(editNama.getText().toString(),editKelas.getText().toString(),editUsername.getText().toString(),editPassword.getText().toString()).enqueue(new Callback<ResponseBody>() {
                         @Override
