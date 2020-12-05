@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aplikasibelajar.MainActivity;
 import com.example.aplikasibelajar.R;
+import com.example.aplikasibelajar.SharedPreferences.PrefManager;
 import com.example.aplikasibelajar.UtilsApi.ApiInterface;
 import com.example.aplikasibelajar.UtilsApi.UtilsApi;
 import com.google.gson.Gson;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
     Context context;
+    PrefManager manager;
 
     @BindView(R.id.btnLogin)
     Button btnLogin;
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         context = this;
+        manager = new PrefManager(context);
         apiInterface = UtilsApi.getApiLogin();
 
         login();
@@ -77,6 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                                         Siswa.DataBean siswa = gson.fromJson(data+"",Siswa.DataBean.class);
 
                                         //session here
+                                        manager.saveSession();
+                                        manager.setIdSiswa(PrefManager.ID_SISWA, siswa.getId_siswa());
+                                        manager.setNamaSiswa(PrefManager.NAMA, siswa.getNama());
+                                        manager.setUsername(PrefManager.USERNAME, siswa.getUsername());
 
                                         Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(loggedIn);

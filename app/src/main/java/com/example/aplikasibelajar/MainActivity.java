@@ -1,8 +1,10 @@
 package com.example.aplikasibelajar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -11,6 +13,7 @@ import com.example.aplikasibelajar.About.AboutActivity;
 import com.example.aplikasibelajar.Jobsheet.JobsheetActivity;
 import com.example.aplikasibelajar.Materi.MateriActivity;
 import com.example.aplikasibelajar.RPP.RppActivity;
+import com.example.aplikasibelajar.SharedPreferences.PrefManager;
 import com.example.aplikasibelajar.Silabus.SilabusActivity;
 import com.example.aplikasibelajar.Soal.SoalActivity;
 import com.example.aplikasibelajar.Video.VideoActivity;
@@ -35,12 +38,21 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.cardAbout)
     CardView cardAbout;
 
+    PrefManager manager;
+    Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        context = this;
+        manager = new PrefManager(context);
+
+        Toast.makeText(context, ""+manager.getIdSiswa(), Toast.LENGTH_SHORT).show();
+
+
 
         cardAbout.setOnClickListener(new View.OnClickListener() {
             @Override
