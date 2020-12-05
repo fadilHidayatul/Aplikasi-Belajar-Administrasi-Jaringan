@@ -1,13 +1,13 @@
-package com.example.aplikasibelajar.Jobsheet;
+package com.example.aplikasibelajar.RPP;
 
 import java.util.List;
 
-public class Jobsheet {
+public class RPP {
 
     /**
-     * pesan : jobsheet ada
+     * pesan : rpp ada
      * status : 200
-     * data : [{"id_jobsheet":"7","judul_jobsheet":"JOB PROXY SERVER","deskripsi":"","file":"bf66cbba2dba1c43a21734280d32ae75.pdf"},{"id_jobsheet":"6","judul_jobsheet":"JOB INTERNET GATEWAY","deskripsi":"","file":"a388d355922fa434bfa4a74b3140670c.pdf"},{"id_jobsheet":"5","judul_jobsheet":"JOB FIREWALL","deskripsi":"","file":"680c1d624911dbb171d6d01ac5dbeea8.pdf"}]
+     * data : [{"id_rpp":"9","judul_rpp":"RPP FIREWALL","deskripsi":"","file":"d6112a65dad6c811ca89a1cf490c8eb1.pdf"},{"id_rpp":"10","judul_rpp":"RPP INTERNET GATEWAY","deskripsi":"","file":"83ded60d18447c5b43a66a66ebc98477.pdf"},{"id_rpp":"11","judul_rpp":"RPP PROXY SERVER","deskripsi":"","file":"1a4028fc6cf214ca4db94d06388789f0.pdf"}]
      */
 
     private String pesan;
@@ -40,31 +40,31 @@ public class Jobsheet {
 
     public static class DataBean {
         /**
-         * id_jobsheet : 7
-         * judul_jobsheet : JOB PROXY SERVER
+         * id_rpp : 9
+         * judul_rpp : RPP FIREWALL
          * deskripsi :
-         * file : bf66cbba2dba1c43a21734280d32ae75.pdf
+         * file : d6112a65dad6c811ca89a1cf490c8eb1.pdf
          */
 
-        private String id_jobsheet;
-        private String judul_jobsheet;
+        private String id_rpp;
+        private String judul_rpp;
         private String deskripsi;
         private String file;
 
-        public String getId_jobsheet() {
-            return id_jobsheet;
+        public String getId_rpp() {
+            return id_rpp;
         }
 
-        public void setId_jobsheet(String id_jobsheet) {
-            this.id_jobsheet = id_jobsheet;
+        public void setId_rpp(String id_rpp) {
+            this.id_rpp = id_rpp;
         }
 
-        public String getJudul_jobsheet() {
-            return judul_jobsheet;
+        public String getJudul_rpp() {
+            return judul_rpp;
         }
 
-        public void setJudul_jobsheet(String judul_jobsheet) {
-            this.judul_jobsheet = judul_jobsheet;
+        public void setJudul_rpp(String judul_rpp) {
+            this.judul_rpp = judul_rpp;
         }
 
         public String getDeskripsi() {

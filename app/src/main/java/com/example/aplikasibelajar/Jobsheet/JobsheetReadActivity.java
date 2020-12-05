@@ -44,8 +44,9 @@ public class JobsheetReadActivity extends AppCompatActivity implements DownloadF
 
         Intent intent = getIntent();
         String idJobsheet = intent.getStringExtra("idJobsheet");//tampil berdasarkan id
+        String pdf = intent.getStringExtra("pdfJobsheet");
 
-        remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
+        remotePDFViewPager = new RemotePDFViewPager(this,"https://jaringan.mantagi.com/jobsheet/download/"+pdf,this);
     }
 
 

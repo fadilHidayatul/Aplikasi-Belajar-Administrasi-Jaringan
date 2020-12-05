@@ -44,6 +44,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.viewholder> 
             public void onClick(View v) {
                 Intent intent = new Intent(context, PlayVideoActivity.class);
                 intent.putExtra("id", dataBeanList.get(position).getLink());
+                intent.putExtra("title",dataBeanList.get(position).getJudul_video());
                 context.startActivity(intent);
             }
         });

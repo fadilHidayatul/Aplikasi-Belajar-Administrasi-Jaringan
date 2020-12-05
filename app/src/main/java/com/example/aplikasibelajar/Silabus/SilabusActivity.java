@@ -39,7 +39,7 @@ public class SilabusActivity extends AppCompatActivity implements DownloadFile.L
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Silabus");
 
-        remotePDFViewPager = new RemotePDFViewPager(this, "https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf", this);
+        remotePDFViewPager = new RemotePDFViewPager(this, "https://jaringan.mantagi.com/silabus.pdf", this);
 
     }
 

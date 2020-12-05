@@ -2,6 +2,7 @@ package com.example.aplikasibelajar.Jobsheet.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class JobsheetAdapter extends RecyclerView.Adapter<JobsheetAdapter.viewho
             public void onClick(View v) {
                 Intent intent = new Intent(context, JobsheetReadActivity.class);
                 intent.putExtra("idJobsheet",dataBeans.get(position).getId_jobsheet());
+                intent.putExtra("pdfJobsheet",dataBeans.get(position).getFile());
                 context.startActivity(intent);
             }
         });

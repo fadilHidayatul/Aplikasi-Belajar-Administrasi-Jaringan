@@ -47,6 +47,7 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.viewHolder
             public void onClick(View v) {
                 Intent intent = new Intent(context, MateriReadActivity.class);
                 intent.putExtra("idMateri",dataBeans.get(position).getId_materi());
+                intent.putExtra("pdf",dataBeans.get(position).getFile());
                 context.startActivity(intent);
             }
         });

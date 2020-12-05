@@ -45,8 +45,9 @@ public class MateriReadActivity extends AppCompatActivity implements DownloadFil
 
         Intent intent = getIntent();
         String idMateri = intent.getStringExtra("idMateri");//tampil berdasarkan id
+        String pdf = intent.getStringExtra("pdf");
 
-        remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
+        remotePDFViewPager = new RemotePDFViewPager(this,"https://jaringan.mantagi.com/Materi/download/"+pdf,this);
     }
 
     @Override

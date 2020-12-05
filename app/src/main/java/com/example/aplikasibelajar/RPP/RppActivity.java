@@ -40,7 +40,7 @@ public class RppActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     Context context;
     RppAdapter adapter;
-    List<Materi.DataBean> listRpp;
+    List<RPP.DataBean> listRpp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class RppActivity extends AppCompatActivity {
     }
 
     private void fetchRPP() {
-        apiInterface.getMateri().enqueue(new Callback<ResponseBody>() {
+        apiInterface.getRPP().enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
@@ -71,7 +71,7 @@ public class RppActivity extends AppCompatActivity {
                             listRpp = new ArrayList<>();
                             Gson gson = new Gson();
                             for (int i = 0; i < array.length(); i++) {
-                                Materi.DataBean dataBean = gson.fromJson(array.getJSONObject(i).toString(), Materi.DataBean.class);
+                                RPP.DataBean dataBean = gson.fromJson(array.getJSONObject(i).toString(), RPP.DataBean.class);
                                 listRpp.add(dataBean);
                             }
 

@@ -44,8 +44,9 @@ public class RppReadActivity extends AppCompatActivity implements DownloadFile.L
 
         Intent intent = getIntent();
         String idRPP = intent.getStringExtra("idRPP"); //tampil berdasarkan id
+        String pdf = intent.getStringExtra("pdf");
 
-        remotePDFViewPager = new RemotePDFViewPager(this,"https://media.neliti.com/media/publications/132386-ID-analisis-kualitas-aplikasi-ujian-online.pdf",this);
+        remotePDFViewPager = new RemotePDFViewPager(this,"https://jaringan.mantagi.com/Rpp/download/"+pdf,this);
 
     }
 

@@ -23,6 +23,7 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
 
     Context context;
     String idVideo = "";
+    String judulVideo = "";
 
     @BindView(R.id.playerView)
     YouTubePlayerView playerView;
@@ -39,6 +40,8 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
 
         Intent intent = getIntent();
         idVideo = intent.getStringExtra("id");
+        judulVideo = intent.getStringExtra("title");
+
         back();
         getLifecycle().addObserver(playerView);
 
@@ -97,7 +100,7 @@ public class PlayVideoActivity extends AppCompatActivity implements LifecycleObs
         playerView.isFullScreen();
         playerView.toggleFullScreen();
 
-        playerView.getPlayerUiController().setVideoTitle("Best of this month");
+        playerView.getPlayerUiController().setVideoTitle(""+judulVideo);
     }
 
     private void back() {

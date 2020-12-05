@@ -22,4 +22,21 @@ public class RetrofitClient {
         }
         return retrofit;
     }
+
+    public static Retrofit getLogin(String url){
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+        if (retrofit == null){
+            retrofit = new Retrofit.Builder()
+                        .baseUrl(url)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .client(client)
+                        .build();
+        }
+        return retrofit;
+    }
+
+
 }
