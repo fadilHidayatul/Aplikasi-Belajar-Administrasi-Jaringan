@@ -50,6 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         context = this;
         apiInterface = UtilsApi.getApiLogin();
 
+//        Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
+//        startActivity(loggedIn);
+//        finish();
         login();
     }
 
@@ -77,8 +80,9 @@ public class LoginActivity extends AppCompatActivity {
                                         Siswa.DataBean siswa = gson.fromJson(data+"",Siswa.DataBean.class);
 
                                         //session here
+
+
                                         Intent loggedIn = new Intent(getApplicationContext(), MainActivity.class);
-                                        Toast.makeText(context, ""+siswa.getId_siswa(), Toast.LENGTH_SHORT).show();
                                         startActivity(loggedIn);
                                         finish();
 
