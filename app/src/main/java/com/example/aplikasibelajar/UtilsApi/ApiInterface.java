@@ -17,8 +17,9 @@ public interface ApiInterface {
     @GET("getDataVideo")
     Call<ResponseBody>getVideo();
 
-    @GET("getDataSoal")
-    Call<ResponseBody>getAllSoal();
+    @FormUrlEncoded
+    @POST("getDataSoal")
+    Call<ResponseBody>getAllSoal(@Field("id")String id);
 
     @GET("getDataSiswa")
     Call<ResponseBody>getDataSiswa();
@@ -38,6 +39,13 @@ public interface ApiInterface {
     @POST("login.php")
     Call<ResponseBody>loginUser(@Field("username") String username,
                                    @Field("password") String password
+    );
 
+    @FormUrlEncoded
+    @POST("sendScore.php")
+    Call<ResponseBody>sendScore(@Field("idSiswa") String idSiswa,
+                                @Field("idMateri") String idMateri,
+                                @Field("tgl") String tgl,
+                                @Field("skor") String skor
     );
 }

@@ -18,6 +18,10 @@ import com.example.aplikasibelajar.Silabus.SilabusActivity;
 import com.example.aplikasibelajar.Soal.SoalActivity;
 import com.example.aplikasibelajar.Video.VideoActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.cardAbout)
     CardView cardAbout;
 
-    PrefManager manager;
     Context context;
 
 
@@ -48,11 +51,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         context = this;
-        manager = new PrefManager(context);
-
-        Toast.makeText(context, ""+manager.getIdSiswa(), Toast.LENGTH_SHORT).show();
-
-
 
         cardAbout.setOnClickListener(new View.OnClickListener() {
             @Override

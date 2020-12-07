@@ -16,13 +16,30 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.aplikasibelajar.MainActivity;
 import com.example.aplikasibelajar.R;
+import com.example.aplikasibelajar.SharedPreferences.PrefManager;
+import com.example.aplikasibelajar.UtilsApi.ApiInterface;
+import com.example.aplikasibelajar.UtilsApi.UtilsApi;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ResultSoalActivity extends AppCompatActivity {
 
     Context context;
+    PrefManager manager;
+    ApiInterface apiInterface;
 
     @BindView(R.id.toolbarResult)
     Toolbar toolbarResult;
@@ -43,6 +60,8 @@ public class ResultSoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result_soal);
         ButterKnife.bind(this);
         context = this;
+        manager = new PrefManager(context);
+        apiInterface = UtilsApi.getApiLogin();
 
         setSupportActionBar(toolbarResult);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -77,6 +96,8 @@ public class ResultSoalActivity extends AppCompatActivity {
     private void playButton() {
         Intent intent = getIntent();
         String idSoal = intent.getStringExtra("idSoal");
+        String hasilSkor = intent.getStringExtra("skor");
+        
         btnReplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,11 +111,53 @@ public class ResultSoalActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(goHome);
+                sendScore(hasilSkor,idSoal);
             }
         });
+    }
+
+    private void sendScore(String hasilSkor, String idSoal) {
+        String idSiswa = manager.getIdSiswa();
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        apiInterface.sendScore(idSiswa,idSoal,date,hasilSkor).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    try {
+                        JSONObject object = new JSONObject(response.body().string());
+                        if (object.getString("status").equals("200")){
+                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
+                            Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
+                            goHome.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            finish();
+                            startActivity(goHome);
+                        }else {
+                            Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    try {
+                        JSONObject object = new JSONObject(response.errorBody().string());
+                        Toast.makeText(context, ""+object.getString("message"), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Cek Koneksi Internet", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override

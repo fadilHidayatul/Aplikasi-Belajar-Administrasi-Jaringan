@@ -49,6 +49,7 @@ public class Soal {
          * pil_d : hadahsfkja
          * pil_e : hadahsfkja
          * kunci : c
+         * pembahasan : text
          */
 
         private String id_evaluasi;
@@ -60,6 +61,7 @@ public class Soal {
         private String pil_d;
         private String pil_e;
         private String kunci;
+        private String pembahasan;
 
         public String getId_evaluasi() {
             return id_evaluasi;
@@ -131,6 +133,14 @@ public class Soal {
 
         public void setKunci(String kunci) {
             this.kunci = kunci;
+        }
+
+        public String getPembahasan(){
+            return pembahasan;
+        }
+
+        public void setPembahasan(String pembahasan){
+            this.pembahasan = pembahasan;
         }
     }
 }
