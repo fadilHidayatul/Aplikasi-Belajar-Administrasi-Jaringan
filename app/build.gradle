@@ -57,4 +57,6 @@ dependencies {
     implementation 'es.voghdev.pdfviewpager:library:1.0.3'
     //YoutubePlayer
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    //dialogLoading
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
 }

@@ -1,5 +1,6 @@
 package com.example.aplikasibelajar.IntroLogin;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.aplikasibelajar.MainActivity;
 import com.example.aplikasibelajar.R;
 import com.example.aplikasibelajar.SharedPreferences.PrefManager;
+import com.example.aplikasibelajar.Soal.SoalLatihanActivity;
 import com.example.aplikasibelajar.UtilsApi.ApiInterface;
 import com.example.aplikasibelajar.UtilsApi.UtilsApi;
 import com.google.gson.Gson;
@@ -25,12 +27,15 @@ import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dmax.dialog.SpotsDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
+
+    AlertDialog dialog;
 
     ApiInterface apiInterface;
     Context context;
@@ -53,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         manager = new PrefManager(context);
         apiInterface = UtilsApi.getApiLogin();
 
+        dialog = new SpotsDialog.Builder().setContext(LoginActivity.this).setMessage("Harap Tunggu ...").setCancelable(false).build();
+
         login();
     }
 
@@ -67,10 +74,12 @@ public class LoginActivity extends AppCompatActivity {
                     inputPassword.setError("Masukkan Password");
                     return;
                 }else{
+                    dialog.show();
                     apiInterface.loginUser(inputUsername.getText().toString(),inputPassword.getText().toString()).enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                             if (response.isSuccessful()){
+                                dialog.hide();
                                 try {
                                     JSONObject object = new JSONObject(response.body().string());
                                     if (object.getString("status").equals("200")){
